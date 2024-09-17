@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Details</title>
+    <style>
+      body {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+      }
+      table {
+        border-collapse: collapse;
+        border: 2px solid black;
+      }
+      th,
+      td {
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Student Details</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>PHONE_NUMBER</th>
+        <th>EMAIL</th>
+        <th>ADDRESS</th>
+        <th>COURSE</th>
+      </tr>
+      {% for std in students %}
+      <tr>
+        <td>{{ std.id }}</td>
+        <td>{{ std.name }}</td>
+        <td>{{ std.phone }}</td>
+        <td>{{ std.email }}</td>
+        <td>{{ std.address }}</td>
+        <td>{{ std.course }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
