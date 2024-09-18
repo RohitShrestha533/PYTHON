@@ -32,6 +32,7 @@
         <th>EMAIL</th>
         <th>ADDRESS</th>
         <th>COURSE</th>
+        <th>ACTION</th>
       </tr>
       {% for std in students %}
       <tr>
@@ -41,6 +42,21 @@
         <td>{{ std.email }}</td>
         <td>{{ std.address }}</td>
         <td>{{ std.course }}</td>
+        <td>
+          <!-- Separate form for edit action -->
+          <form action="{% url 'edit_student' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{ std.id }}" />
+            <button type="submit" name="edit">edit</button>
+          </form>
+
+          <!-- Separate form for delete action -->
+          <form action="{% url 'delete_student' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{ std.id }}" />
+            <button type="submit" name="delete">delete</button>
+          </form>
+        </td>
       </tr>
       {% endfor %}
     </table>
